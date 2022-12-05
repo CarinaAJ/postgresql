@@ -9,7 +9,9 @@ from sqlalchemy.orm import sessionmaker
 db = create_engine("postgresql:///chinook")
 base = declarative_base()
 
-# create a class-based model for the "Artist" table
+# create a class-based model for the "Artist" table, need to be added before
+# the Session is created but after base is declared, since we need to use the base subclass
+
 class Artist(base):
     __tablename__ = "Artist"
     ArtistId = Column(Integer, primary_key=True)
